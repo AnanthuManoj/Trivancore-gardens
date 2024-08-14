@@ -5,11 +5,18 @@ import {
     getBlogsById,
     editBlogs,
     deleteBlogs,
+
     addBanners,
     editBanners,
     deleteBanners,
     getBannersById,
-    getBanners
+    getBanners,
+
+    addVideos,
+    editVideos,
+    deleteVideos,
+    getVideos,
+    getVideoById,
 } from "./storeUrls";
 
 const useGetBlogs = (data) => {
@@ -128,15 +135,82 @@ const useDeleteBanners = () => {
     });
 };
 
+
+const useGetVideos = (data) => {
+    return useQuery(["get_Videos", data], () => getVideos(data), {
+        staleTime: 3000,
+        keepPreviousData: true,
+        // refetchOnWindowFocus: false,
+    });
+};
+
+const useGetVideosById = (data) => {
+    return useQuery(["get_Videos", data], () => getVideoById(data), {
+        staleTime: 3000,
+        keepPreviousData: true,
+        // refetchOnWindowFocus: false,
+    });
+};
+
+const useAddVideos = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation((data) => addVideos(data), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries("get_Videos");
+            return data;
+        },
+        onError: (data) => {
+            return data;
+        },
+    });
+};
+
+const useEditVideos = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation((data) => editVideos(data), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries("get_Videos");
+            return data;
+        },
+        onError: (data) => {
+            return data;
+        },
+    });
+};
+
+const useDeleteVideos = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation((data) => deleteVideos(data), {
+        onSuccess: (data) => {
+            queryClient.invalidateQueries("get_Videos");
+            return data;
+        },
+        onError: (data) => {
+            return data;
+        },
+    });
+};
+
+
 export {
     useGetBlogs,
     useGetBlogsById,
     useAddBlogs,
     useEditBlogs,
     useDeleteBlogs,
+
     useGetBanners,
     useGetBannersById,
     useAddBanners,
     useEditBanners,
-    useDeleteBanners
+    useDeleteBanners,
+
+    useGetVideos,
+    useGetVideosById,
+    useAddVideos,
+    useEditVideos,
+    useDeleteVideos,
 };

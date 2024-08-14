@@ -31,6 +31,10 @@ import EditBanner from "pages/Banner/EditBanner";
 import EditBlog from "pages/Blogs/EditBlog";
 import EditCategory from "pages/Category/EditCategory";
 
+import AddVideo from "pages/Video/AddVideo";
+import EditVideo from "pages/Video/EditVideo";
+
+
 export default function App() {
   const [controller, dispatch] = useController();
   const { miniSidenav, direction, sidenavColor, darkSidenav, darkMode, auth } = controller;
@@ -111,6 +115,10 @@ export default function App() {
                 <Route path="/products/addProducts" element={<AddProduct />} />
                 <Route path="/products/editProduct/:id" element={<EditProduct />} />
                 <Route path="/orders/editOrder/:id" element={<EditOrder />} />
+
+                <Route path="/videos/editVideo/:id" element={<EditVideo />} />
+                <Route path="/videos/addVideo" element={<AddVideo />} />
+
                 <Route path="*" element={<Navigate to="/category" />} />
               </Routes>
               <Footer />
@@ -143,6 +151,10 @@ export default function App() {
               <Route path="/products/editProduct/:id" element={<EditProduct />} />
               <Route path="/orders/editOrder/:id" element={<EditOrder />} />
               <Route path="/banners/editBanner/:id" element={<EditBanner />} />
+
+              <Route path="/videos/editVideo/:id" element={<EditVideo />} />
+              <Route path="/videos/addVideo" element={<AddVideo />} />
+              
               {/* <Route path="/blogs/editBlog/:id" element={<EditBlog />} /> */}
               <Route path="*" element={<Navigate to="/category" />} />
             </Routes>

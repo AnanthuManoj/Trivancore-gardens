@@ -4,6 +4,7 @@ import Products from "pages/Products";
 import Orders from "pages/Orders";
 import Banner from "pages/Banner";
 import Blogs from "pages/Blogs";
+import Videos from "pages/Video";
 import Settings from "pages/Settings";
 import Billing from "layouts/billing";
 import Profile from "layouts/profile";
@@ -49,6 +50,14 @@ const routes = [
     route: "/banners",
     icon: <Box component="i" color="warning" fontSize="14px" className="ni ni-album-2" />,
     component: <Banner />,
+  },
+  {
+    type: "route",
+    name: "videos",
+    key: "videos",
+    route: "/videos",
+    icon: <Box component="i" color="warning" fontSize="14px" className="ni ni-album-2" />,
+    component: <Videos />,
   },
   // {
   //   type: "route",
